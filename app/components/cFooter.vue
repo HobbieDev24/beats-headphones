@@ -75,10 +75,10 @@
 <style scoped>
 footer {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: flex-start;
     gap: 120px;
-    padding-block: 130px;
+    padding: 8.33%;
 
     ul {
         list-style: none;

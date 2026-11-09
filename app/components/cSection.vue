@@ -5,7 +5,7 @@
 
 const props = defineProps({
     bgColor: {
-        type: String,
+        type: String as PropType<'black' | 'white'>,
         required: true
     },
 
@@ -18,18 +18,28 @@ const props = defineProps({
         type: String,
         required: true
     },
+
+    isReverse: {
+        type: Boolean,
+        default: false,
+        required: false
+    }
 })
 
 </script>
 
 <template>
 
-    <section :style="{ backgroundColor: props.bgColor }">
+    <section
+        :style="{ backgroundColor: props.bgColor }"
+        :class="props.isReverse ? 'reverse' : ''"
+    >
         <div
             style="max-width: 600px;"
             :class="props.bgColor === 'black' ? 'white' : 'black'"
         >
             <h2> {{ heading }} </h2>
+            <slot name="icon-text"></slot>
             <p>{{ description }}</p>
             <button> Shop now </button>
         </div>
@@ -47,7 +57,9 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12.5%;
+    padding: 8.33%;
+    gap: 40px;
+    min-height: 100vh;
 }
 
 h2 {
@@ -85,6 +97,10 @@ button:hover {
     background-color: #c02626;
 }
 
+.reverse {
+    flex-direction: row-reverse;
+}
+
 @media only screen and (max-width: 900px) {
     section {
         flex-direction: column;
@@ -108,5 +124,10 @@ button:hover {
     button {
         margin-inline: auto;
     }
+
+    .reverse {
+        flex-direction: column;
+    }
+
 }
 </style>

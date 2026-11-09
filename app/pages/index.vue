@@ -3,25 +3,15 @@
     lang="ts"
 >
 
+useSeoMeta({
+    title: 'Beats by Dr Dre',
+})
+
 </script>
 
 <template>
 
-    <head>
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1"
-        />
-        <meta charset="UTF-8">
-        <meta
-            http-equiv="X-UA-Compatible"
-            content="IE=edge"
-        >
-        <title>Beats by Dr Dre</title>
-    </head>
-
     <body>
-
         <main>
 
             <cNav></cNav>
@@ -41,24 +31,24 @@
             <cSection
                 :bg-color="'white'"
                 :heading="'Wireless headphones for all-day activity'"
+                :is-reverse="true"
                 description="And if you’re in need of extra juice, use 5-minute Fast Fuel for 1 hour of playback when battery is low."
             >
+
+                <template v-slot:icon-text>
+                    <div style="margin-bottom: 1.4rem">
+                        <img
+                            style="margin-right:0.6rem; width: 1rem; vertical-align: middle;"
+                            src="/icons/icon-battery.svg"
+                        >
+                        <span>Up to <b>15 hours</b> of listening time</span>
+                    </div>
+                </template>
+
                 <img
                     style="max-width: 640px;"
                     src="/images/wireless-headphones.png"
                 >
-
-                <!-- <p>Up to <b>15 hours</b> of listening time</p> -->
-                <!-- <div> -->
-                <!-- </div> -->
-
-                <!-- <div class="component-column wireless-column-right pad-top-bot-260 pad-left-d-130-m-0"> -->
-
-                <!-- <img
-                        style="margin-right: 1rem; margin-bottom: 20px; width: 40px"
-                        src="/icons/icon-battery.svg"
-                    > -->
-                <!-- </div> -->
 
             </cSection>
 
@@ -75,12 +65,11 @@
 
             </cSection>
 
-
-
             <cSection
                 :bgColor="'white'"
                 heading="For every mood & every setting"
                 description="Whether you want the coolest wireless earphones for the gym or the most sophisticated noise-canceling headphones for travel, Beats headphones look as good as they sound."
+                :is-reverse="true"
             >
                 <div style="display: flex; gap: 14px;">
 
@@ -125,9 +114,13 @@
                 description="With iOS and the Apple W1 chip, one press and you're paired with your
                     device.
                     Now you can easily go from taking a call on your iPhone to watching a film on your MacBook."
+                :is-reverse="true"
             >
                 <div>
-                    <img src="/images/pair-devices.png">
+                    <img
+                        src="/images/pair-devices.png"
+                        style="max-width: 1024px;"
+                    >
                 </div>
             </cSection>
 
@@ -140,7 +133,7 @@
 
                 <div>
                     <img
-                        style="max-width: 240px;"
+                        style="max-width: 360px;"
                         src="/images/musicians-dre.png"
                     >
                 </div>
@@ -150,16 +143,11 @@
             <cFooter></cFooter>
 
         </main>
-
     </body>
 
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans&display=swap');
-
-
 * {
     box-sizing: border-box;
 }
@@ -177,7 +165,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+input {
     margin: 0;
     padding: 0;
 }
@@ -187,16 +176,11 @@ img {
     height: auto;
 }
 
-.pointer {
-    cursor: pointer;
-}
-
 input {
     font-size: 1rem;
     background: none;
     border: none;
     padding: 13px 0px 13px 1rem;
-    margin: 0;
 }
 
 input[type=text]:focus {
@@ -215,13 +199,7 @@ input[type=text]:focus {
     color: white;
 }
 
-@media only screen and (max-width: 900px) {
-
-    /* .section-6,
-    .section-4,
-    .section-2 {
-        flex-direction: column-reverse;
-    } */
-
+.pointer {
+    cursor: pointer;
 }
 </style>
